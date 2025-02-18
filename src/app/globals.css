@@ -3,19 +3,53 @@
 @tailwind utilities;
 
 :root {
-  --background: #ffffff;
-  --foreground: #171717;
+  --foreground-rgb: 0, 0, 0;
+  --background-start-rgb: 214, 219, 220;
+  --background-end-rgb: 255, 255, 255;
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --background: #0a0a0a;
-    --foreground: #ededed;
+.dark {
+  --foreground-rgb: 255, 255, 255;
+  --background-start-rgb: 0, 0, 0;
+  --background-end-rgb: 0, 0, 0;
+}
+
+@layer base {
+  body {
+    @apply text-gray-900 dark:text-gray-100;
+  }
+
+  input[type="number"],
+  input[type="text"] {
+    @apply bg-white dark:bg-gray-800 text-gray-900 dark:text-white;
+  }
+
+  /* Remove arrows from number input */
+  input[type="number"]::-webkit-inner-spin-button,
+  input[type="number"]::-webkit-outer-spin-button {
+    -webkit-appearance: none;
+    margin: 0;
+  }
+  input[type="number"] {
+    -moz-appearance: textfield;
   }
 }
 
-body {
-  color: var(--foreground);
-  background: var(--background);
-  font-family: Arial, Helvetica, sans-serif;
+@layer components {
+  .card {
+    @apply bg-white dark:bg-gray-800 rounded-xl shadow-lg p-6;
+  }
+
+  .input-field {
+    @apply w-full p-3 border border-gray-300 dark:border-gray-600 rounded-lg 
+           bg-white dark:bg-gray-800 text-gray-900 dark:text-white 
+           focus:ring-2 focus:ring-blue-500 focus:border-transparent 
+           transition-colors placeholder-gray-400 dark:placeholder-gray-500;
+  }
+
+  .button-primary {
+    @apply bg-blue-600 hover:bg-blue-700 text-white font-medium py-3 rounded-lg 
+           transition-colors flex items-center justify-center gap-2 
+           disabled:opacity-50 disabled:cursor-not-allowed;
+  }
 }
