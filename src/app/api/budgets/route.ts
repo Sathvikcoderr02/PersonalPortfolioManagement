@@ -18,7 +18,7 @@ export async function GET(request: Request) {
     
     const budgets = await Budget.find(query);
     return NextResponse.json(budgets);
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to fetch budgets' }, { status: 500 });
   }
 }
@@ -35,7 +35,7 @@ export async function POST(request: Request) {
     );
     
     return NextResponse.json(budget, { status: 201 });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to create/update budget' }, { status: 500 });
   }
 }
@@ -53,7 +53,7 @@ export async function DELETE(request: Request) {
     await Budget.findByIdAndDelete(id);
     
     return NextResponse.json({ message: 'Budget deleted successfully' });
-  } catch (error) {
+  } catch {
     return NextResponse.json({ error: 'Failed to delete budget' }, { status: 500 });
   }
 }

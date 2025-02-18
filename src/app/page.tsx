@@ -18,7 +18,7 @@ export default function Home() {
   const [budgetCategory, setBudgetCategory] = useState<Category>('Other');
   const [loading, setLoading] = useState(false);
   const [deleteLoading, setDeleteLoading] = useState<string | null>(null);
-  const [error, setError] = useState<string | null>(null);
+  const [_error, setError] = useState<string | null>(null);
   const [selectedMonth, setSelectedMonth] = useState(new Date().toISOString().slice(0, 7));
   const [page, setPage] = useState(1);
   const [hasMore, setHasMore] = useState(true);
@@ -26,7 +26,7 @@ export default function Home() {
 
   // Memoize monthly data calculations
   const monthlyData = useMemo(() => {
-    return transactions.reduce((acc: any[], transaction) => {
+    return transactions.reduce((acc: { month: string, expenses: number, income: number, net: number }[], transaction) => {
       const date = new Date(transaction.date);
       const month = date.toLocaleString('default', { month: 'long', year: 'numeric' });
       
