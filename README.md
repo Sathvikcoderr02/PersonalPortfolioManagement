@@ -79,6 +79,43 @@ A modern web application for managing personal finances with real-time tracking,
 5. **Open the application**
    Navigate to [http://localhost:3000](http://localhost:3000)
 
+## Deployment on Netlify
+
+Follow these steps to deploy the application on Netlify:
+
+1. **Sign up/Login to Netlify**
+   - Go to [Netlify](https://www.netlify.com/)
+   - Sign up or login with your GitHub account
+
+2. **Import your project**
+   - Click "Add new site" > "Import an existing project"
+   - Select "Deploy with GitHub"
+   - Choose your repository `PersonalPortfolioManagement`
+
+3. **Configure build settings**
+   - Build command: `npm run build`
+   - Publish directory: `.next`
+   - The `netlify.toml` file in the repository will handle other configurations
+
+4. **Set environment variables**
+   - Go to Site settings > Build & deploy > Environment
+   - Add the following environment variables:
+     ```
+     MONGODB_URI=your_mongodb_connection_string
+     ```
+
+5. **Deploy**
+   - Click "Deploy site"
+   - Netlify will automatically build and deploy your application
+   - Any future pushes to the main branch will trigger automatic deployments
+
+6. **Custom domain (Optional)**
+   - Go to Site settings > Domain management
+   - Add your custom domain
+   - Follow Netlify's instructions for DNS configuration
+
+Note: Make sure your MongoDB database is accessible from Netlify's servers. You might need to whitelist Netlify's IP addresses in your MongoDB configuration.
+
 ## Project Structure
 
 ```
