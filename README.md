@@ -2,7 +2,7 @@
 
 A modern web application for managing personal finances with real-time tracking, budgeting, and insightful visualizations.
 
-![Personal Finance Portfolio](screenshot.png)
+
 
 ## Features
 
