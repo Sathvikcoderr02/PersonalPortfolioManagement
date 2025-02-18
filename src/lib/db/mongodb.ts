@@ -1,5 +1,6 @@
 import mongoose from 'mongoose';
 
+/* eslint-disable @typescript-eslint/no-unused-vars */
 interface GlobalMongo {
   conn: typeof mongoose | null;
   promise: Promise<typeof mongoose> | null;
@@ -8,8 +9,10 @@ interface GlobalMongo {
 interface GlobalWithMongo extends Global {
   mongoose: GlobalMongo;
 }
+/* eslint-enable @typescript-eslint/no-unused-vars */
 
 declare global {
+  // eslint-disable-next-line no-var
   var mongoose: GlobalMongo | undefined;
 }
 
