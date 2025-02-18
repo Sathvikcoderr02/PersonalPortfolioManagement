@@ -13,8 +13,11 @@ declare global {
   var mongoose: GlobalMongo | undefined;
 }
 
-// Note: The username might need URL encoding for special characters
-const MONGODB_URI = process.env.MONGODB_URI || 'mongodb+srv://sathvik:Z4WWQysCevwII1if@cluster0.b9xl9t5.mongodb.net/finance-portfolio?retryWrites=true&w=majority';
+if (!process.env.MONGODB_URI) {
+  throw new Error('Please define the MONGODB_URI environment variable inside .env');
+}
+
+const MONGODB_URI = process.env.MONGODB_URI;
 
 let cached = global.mongoose as GlobalMongo;
 
